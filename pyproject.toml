@@ -24,7 +24,7 @@ classifiers = [
   "Topic :: Software Development :: Testing",
 ]
 dependencies = [
-  "certifi>=2026.10.18",
+  "certifi>=2026.10.23",
   "fastapi>=0.110",
   "Pillow>=10.0",
   "playwright>=1.42",
