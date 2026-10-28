@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recorder · TestBench</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <style>
+    .recorder-form,.recorder-tools{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+    .recorder-form label{display:grid;gap:5px;min-width:220px}
+    .recorder-form input,.recorder-form select,.step-editor{padding:9px;border:1px solid #cbd5e1;border-radius:6px}
+    .step-row{display:grid;grid-template-columns:minmax(260px,1fr) auto;gap:12px;padding:12px;border-bottom:1px solid #e2e8f0}
+    .step-editor{width:100%;min-height:62px;font:13px ui-monospace,monospace}
+    .event-thumb{max-width:180px;max-height:120px;object-fit:contain}
+    .notice{padding:12px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <a href="/">← Dashboard</a>
+      <p class="eyebrow">Local-first QA</p>
+      <h1>Recorder</h1>
+      <p class="notice">Only record apps and sites you own or have permission to test.
+        Screenshots may contain sensitive data and are stored locally only.</p>
+    </header>
+    <section class="panel">
+      <h2>Start recording</h2>
+      <div class="recorder-form">
+        <label>Target
+          <select id="target">
+            <option value="web">Web</option><option value="android">Android</option><option value="game">Game</option>
+          </select>
+        </label>
+        <label id="url-field">URL<input id="url" type="url" placeholder="https://example.test"></label>
+        <label id="device-field" class="hidden">Device<input id="device" value="auto"></label>
+        <label id="package-field" class="hidden">Android package<input id="package" placeholder="com.example.app"></label>
+        <label id="app-field" class="hidden">APK path (optional)<input id="app" placeholder="./apps/demo.apk"></label>
+        <label id="surface-field" class="hidden">Game surface
+          <select id="surface"><option>desktop</option><option>android</option><option>browser</option></select>
+        </label>
+        <label id="window-field" class="hidden">Window title<input id="window-title"></label>
+        <label>Test name<input id="name" value="Recorded test"></label>
+      </div>
+      <div class="recorder-tools">
+        <button id="start" class="button">Start Recording</button>
+        <button id="pause" class="button" disabled>Pause</button>
+        <button id="resume" class="button" disabled>Resume</button>
+        <button id="stop" class="button" disabled>Stop</button>
+        <button id="replay" class="button" disabled>Replay now</button>
+        <button id="save" class="button" disabled>Save as test</button>
+      </div>
+      <p id="status">Idle</p>
+      <div id="self-check"></div>
+      <p><a href="/game-template-maker">Review and rename recorded game templates</a></p>
+    </section>
+    <section class="panel">
+      <h2>Recorded steps</h2>
+      <p>Edit YAML step mappings directly; insert a step, delete one, or use the arrows to reorder.</p>
+      <button id="add-step" class="button">Add step</button>
+      <div id="steps"></div>
+    </section>
+    <section class="panel">
+      <h2>Interaction screenshots</h2>
+      <div id="events"></div>
+    </section>
+  </main>
+  <script src="/static/recorder.js"></script>
+</body>
+</html>

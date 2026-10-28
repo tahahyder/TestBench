@@ -1,0 +1,17 @@
+name: Demo site login works
+target: web
+config:
+  browser: chromium
+  headless: true
+  timeout_ms: 10000
+steps:
+  - open: https://the-internet.herokuapp.com/login
+  - type:
+      field: Username
+      value: tomsmith
+  - type:
+      field: Password
+      value: SuperSecretPassword!
+  - click: Login
+  - expect_visible: You logged into a secure area!
+  - screenshot: after_login

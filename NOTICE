@@ -1,0 +1,29 @@
+TestBench is distributed under the MIT License. Third-party dependencies are
+installed as separate packages; their code is not vendored into this project.
+Review the license metadata shipped by each installed dependency when
+redistributing a deployment.
+
+Direct runtime dependencies and commonly used optional integrations include:
+
+- FastAPI — MIT
+- Playwright for Python — Apache-2.0
+- Pillow — HPND
+- Pydantic — MIT
+- PyYAML — MIT
+- SQLAlchemy — MIT
+- Typer — MIT
+- Uvicorn — BSD-3-Clause
+- Appium-Python-Client (mobile extra) — Apache-2.0
+- NumPy (mobile/game/AI extras) — BSD-3-Clause
+- OpenCV (game/mobile/AI extras) — Apache-2.0
+- MSS (game extra) — MIT
+- PyAutoGUI (game extra) — BSD-3-Clause
+- pynput (game extra) — LGPL-3.0-or-later
+- pytesseract (game extra) — Apache-2.0; the Tesseract executable is a
+  separately installed dependency
+- Faker (AI extra) — MIT
+- OpenAI Python client (AI extra) — Apache-2.0
+
+License identifiers above summarize the projects' published license metadata;
+transitive dependencies may have additional notices. Nothing in TestBench
+bundles the separately installed tools or browser binaries.

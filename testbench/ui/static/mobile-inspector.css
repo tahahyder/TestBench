@@ -1,0 +1,86 @@
+.inspector-link {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.inspector-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, .8fr);
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.screen-canvas {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid #334155;
+  background: #020617;
+}
+
+.screen-canvas img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 75vh;
+}
+
+#element-overlays {
+  position: absolute;
+  inset: 0;
+}
+
+.element-overlay {
+  position: absolute;
+  min-width: 4px;
+  min-height: 4px;
+  padding: 0;
+  border: 1px solid #22d3ee;
+  background: #22d3ee22;
+  cursor: pointer;
+}
+
+.element-overlay:hover,
+.element-overlay.selected {
+  border: 2px solid #facc15;
+  background: #facc1544;
+  z-index: 1;
+}
+
+.locator-card {
+  padding: 1rem;
+  border: 1px solid #334155;
+  border-radius: .6rem;
+  overflow-wrap: anywhere;
+}
+
+.locator-card h2,
+.locator-card h3 {
+  margin: 0 0 .4rem;
+}
+
+.locator-card h3 {
+  margin-top: 1rem;
+  font-size: .95rem;
+}
+
+.locator-card pre {
+  margin: 0;
+  padding: .8rem;
+  overflow-x: auto;
+  border-radius: .4rem;
+  background: #020617;
+  white-space: pre-wrap;
+}
+
+.error {
+  color: #f87171;
+}
+
+@media (max-width: 760px) {
+  .inspector-layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobile Inspector — TestBench</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <link rel="stylesheet" href="/static/mobile-inspector.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <a href="/">← TestBench dashboard</a>
+      <h1>Mobile Inspector</h1>
+      <p class="subtitle">Inspect the current Settings screen on a connected Android device.</p>
+    </header>
+    <section class="panel">
+      <div class="panel-heading">
+        <h2>Connected device</h2>
+        <button id="inspect" class="button">Capture screen</button>
+      </div>
+      <p id="device-info" class="subtitle"></p>
+      <p id="inspector-error" class="error hidden"></p>
+      <div class="inspector-layout">
+        <div id="screen-canvas" class="screen-canvas hidden">
+          <img id="device-screen" alt="Android device screenshot">
+          <div id="element-overlays"></div>
+        </div>
+        <div class="locator-card">
+          <h2>Selected element</h2>
+          <p id="selected-description" class="subtitle">Select a highlighted element on the screen.</p>
+          <h3>Locator</h3>
+          <pre><code id="selected-locator">—</code></pre>
+          <h3>Ready-to-copy YAML</h3>
+          <pre><code id="selected-yaml"># click an element to generate a step</code></pre>
+          <button id="copy-yaml" class="text-button" disabled>Copy YAML</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="/static/mobile-inspector.js"></script>
+</body>
+</html>

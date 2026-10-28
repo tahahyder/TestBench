@@ -1,0 +1,15 @@
+name: Canvas game starts and renders
+target: game
+config:
+  surface: browser
+  url: http://127.0.0.1:8001/game_demo/index.html
+  templates_dir: tests_examples/game_demo/templates
+  match_threshold: 0.9
+  step_timeout: 5
+steps:
+  - open: http://127.0.0.1:8001/game_demo/index.html
+  - click_image: start_button.png
+  - wait_for_change: {timeout: 3}
+  - expect_text: "Level 1"
+  - measure_fps: {seconds: 2, min_fps: 1}
+  - screenshot: game_started

@@ -1,0 +1,36 @@
+name: Recorder demo session
+target: web
+config:
+  browser: chromium
+  url: file:///F:/Websites/TestBench/tests_examples/recorder_demo/index.html
+variables:
+- LOGIN_PASSWORD
+steps:
+- open: file:///F:/Websites/TestBench/tests_examples/recorder_demo/index.html
+- type:
+    field:
+      role:
+        role: textbox
+        name: Email address
+    value: qa@example.test
+- type:
+    field:
+      role:
+        role: textbox
+        name: Password
+    value: ${LOGIN_PASSWORD}
+- select_option:
+    field:
+      role:
+        role: combobox
+        name: Plan
+    value: Professional
+- click:
+    role:
+      role: checkbox
+      name: Accept terms
+- click:
+    role:
+      role: button
+      name: Continue
+- wait: 0.2

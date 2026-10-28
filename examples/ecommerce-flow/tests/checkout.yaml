@@ -1,0 +1,10 @@
+name: Add item and prepare checkout
+target: web
+tags: [smoke, cart]
+steps:
+  - open: http://127.0.0.1:8765
+  - click: Add item to cart
+  - expect_text: 1 item in cart
+  - expect_enabled: {target: Checkout, enabled: true}
+  - click: Checkout
+  - expect_visible: Order ready

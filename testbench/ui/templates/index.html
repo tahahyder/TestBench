@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TestBench</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <p class="eyebrow">Local-first QA</p>
+      <h1>TestBench</h1>
+      <p class="subtitle">Write once, run across web, Android, and games.</p>
+      <a class="inspector-link" href="/mobile-inspector">Mobile Inspector</a>
+      <a class="inspector-link" href="/game-template-maker">Game Template Maker</a>
+      <a class="inspector-link" href="/recorder">Recorder</a>
+      <a class="inspector-link" href="/ai-writer">AI Test Writer</a>
+      <a class="inspector-link" href="/history">History trends</a>
+    </header>
+    <section class="panel welcome-panel" aria-labelledby="welcome-title">
+      <h2 id="welcome-title">Welcome to TestBench</h2>
+      <p id="setup-status" role="status">Checking your local setup…</p>
+      <div class="welcome-steps">
+        <article>
+          <h3>1. Run a sample test</h3>
+          <p>Start with the included public demo-site example.</p>
+          <code>testbench run tests/sample_web.yaml</code>
+        </article>
+        <article>
+          <h3>2. Record a test</h3>
+          <p>Interact with a site you own or are authorized to test.</p>
+          <a href="/recorder">Open Recorder</a>
+        </article>
+        <article>
+          <h3>3. Try AI assist</h3>
+          <p>AI is optional, disabled by default, and requires provider consent.</p>
+          <a href="/ai-writer">Open AI Test Writer</a>
+        </article>
+      </div>
+    </section>
+    <section class="panel">
+      <h2 class="text-xl font-semibold">Tests</h2>
+      <div id="tests"></div>
+      <p id="empty-tests" class="empty hidden">
+        No YAML tests found in the configured tests folder.
+      </p>
+    </section>
+    <section class="panel history-panel">
+      <div class="panel-heading">
+        <h2>Run history</h2>
+        <button id="refresh" class="text-button">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table class="history-table">
+          <thead><tr>
+            <th>Test</th><th>Status</th><th>Started</th><th>Duration</th><th>Report</th>
+          </tr></thead>
+          <tbody id="history"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="/static/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Test Writer · TestBench</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <style>
+    .writer-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .writer-form label{display:grid;gap:6px}
+    textarea,select,input{font:inherit;padding:9px;border:1px solid #cbd5e1;border-radius:6px}
+    #instruction{min-height:90px} #yaml{width:100%;min-height:360px;font:13px ui-monospace,monospace}
+    .button-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+    .notice{padding:12px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px}
+    .draft{border:1px solid #cbd5e1;border-radius:8px;padding:12px;margin:12px 0}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <a href="/">← Dashboard</a>
+      <p class="eyebrow">Optional AI · local-first</p>
+      <h1>AI Test Writer</h1>
+      <p>AI is disabled by default. Review every generated step before saving or running it.</p>
+    </header>
+    <section class="panel">
+      <h2>Privacy and provider consent</h2>
+      <p id="provider-status">Loading provider settings…</p>
+      <p id="consent-notice" class="notice"></p>
+      <label><input id="consent-check" type="checkbox">
+        I consent to page content and screenshots being sent to the selected provider.
+        Use Ollama for fully local processing.</label>
+      <button id="consent" class="button">Remember consent</button>
+    </section>
+    <section class="panel">
+      <h2>Describe a test</h2>
+      <div class="writer-form">
+        <label>Target
+          <select id="target"><option>web</option><option>android</option><option>game</option></select>
+        </label>
+        <label>Starting URL (web)
+          <input id="url" type="url" placeholder="https://example.test">
+        </label>
+        <label>Test name for saving
+          <input id="name" value="AI generated test">
+        </label>
+      </div>
+      <label for="instruction">Plain-English request</label>
+      <textarea id="instruction" maxlength="4000" placeholder="Log in with valid credentials and check that the dashboard is shown."></textarea>
+      <label><input id="iterate" type="checkbox"> Iterate: run and improve failures (up to 3 rounds)</label>
+      <div class="button-row">
+        <button id="generate" class="button">Generate</button>
+        <button id="validate" class="button" disabled>Validate</button>
+        <button id="dry-run" class="button" disabled>Dry run</button>
+        <button id="save" class="button" disabled>Save</button>
+      </div>
+      <p id="status" role="status">AI is off until enabled in testbench.toml.</p>
+      <details id="diff-panel"><summary>Generated draft diff — review before saving</summary><pre id="diff"></pre></details>
+      <textarea id="yaml" aria-label="Editable generated YAML" spellcheck="false"></textarea>
+    </section>
+    <section class="panel">
+      <h2>Suggest more test scenarios</h2>
+      <div class="writer-form">
+        <label>Existing YAML test
+          <select id="suggest-test"></select>
+        </label>
+      </div>
+      <div class="button-row"><button id="suggest" class="button">Suggest drafts</button></div>
+      <div id="drafts"></div>
+    </section>
+    <section class="panel">
+      <h2>Repeatable fake form data</h2>
+      <label>Fields as JSON
+        <textarea id="data-fields">[{"name":"email","type":"email"},{"name":"full_name","type":"text"}]</textarea>
+      </label>
+      <label>Seed <input id="seed" type="number" value="42"></label>
+      <label>Optional context-specific refinement (uses the selected AI provider)
+        <input id="data-context" maxlength="1000" placeholder="Use a known valid postal code format for the test region">
+      </label>
+      <button id="make-data" class="button">Generate fake data</button>
+      <pre id="fake-data"></pre>
+    </section>
+    <section class="panel">
+      <h2>Locator healing history</h2>
+      <div id="healing-history"></div>
+    </section>
+  </main>
+  <script src="/static/ai-writer.js"></script>
+</body>
+</html>

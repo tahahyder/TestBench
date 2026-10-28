@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "testbench-slack-notifier"
+version = "0.1.0"
+description = "Example TestBench run-completion notification plugin."
+requires-python = ">=3.11"
+dependencies = ["testbench>=0.1.0"]
+
+[project.entry-points."testbench.hooks"]
+slack-notifier = "testbench_slack_notifier:SlackNotifier"
+
+[tool.setuptools]
+py-modules = ["testbench_slack_notifier"]

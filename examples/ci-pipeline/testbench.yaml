@@ -1,0 +1,6 @@
+name: CI smoke test
+target: web
+tags: [ci, smoke]
+steps:
+  - open: https://example.com
+  - expect_visible: Example Domain

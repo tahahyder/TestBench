@@ -1,0 +1,28 @@
+name: Bug report
+description: Report a reproducible problem.
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: TestBench version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Include a minimal YAML test with secrets removed.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: OS, Python version, and relevant driver versions

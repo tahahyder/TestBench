@@ -1,0 +1,17 @@
+name: Android app opens
+target: android
+config:
+  appium_url: http://127.0.0.1:4723
+  device: auto
+  package: com.android.settings
+  activity: .Settings
+  reset: false
+  timeouts:
+    implicit: 0
+    explicit: 10
+steps:
+  - open: settings
+  - expect_visible: Network & internet
+  - scroll_to: Display
+  - expect_visible: Display
+  - screenshot: settings_display

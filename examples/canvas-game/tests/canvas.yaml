@@ -1,0 +1,9 @@
+name: Local canvas starts
+target: game
+config:
+  surface: browser
+  url: http://127.0.0.1:8765
+steps:
+  - tap: {x: 0.5, y: 0.5}
+  - wait_for_change: {timeout: 3}
+  - measure_fps: {seconds: 1, min_fps: 1}

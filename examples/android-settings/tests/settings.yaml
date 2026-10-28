@@ -1,0 +1,9 @@
+name: Android Settings opens
+target: android
+config:
+  device: auto
+  package: com.android.settings
+  reset: false
+steps:
+  - open: ""
+  - expect_visible: Settings

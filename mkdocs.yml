@@ -1,0 +1,24 @@
+site_name: TestBench
+site_description: A local-first test automation workbench.
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: cyan
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Installation: installation.md
+  - Writing tests: writing-tests.md
+  - YAML reference: yaml-reference.md
+  - Web: web.md
+  - Android: android.md
+  - Games: games.md
+  - Recorder: recorder.md
+  - AI assist: ai-assist.md
+  - CI usage: ci.md
+  - Plugins: plugins.md
+  - FAQ and troubleshooting: faq.md
+  - Roadmap: roadmap.md
+strict: true

@@ -1,0 +1,35 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+.venv/
+venv/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+htmlcov/
+.coverage.*
+.env
+.env.*
+!.env.example
+dist/
+build/
+site/
+testbench.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Test and run artifacts
+runs/
+reports/
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

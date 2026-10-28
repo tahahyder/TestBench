@@ -1,0 +1,6 @@
+name: Demo login page loads
+target: web
+tags: [smoke]
+steps:
+  - open: https://the-internet.herokuapp.com/login
+  - expect_visible: Login Page

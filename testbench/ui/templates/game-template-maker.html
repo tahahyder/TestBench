@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Template Maker — TestBench</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <p class="eyebrow">Vision-based game testing</p>
+      <h1>Game Template Maker</h1>
+      <p class="subtitle">Capture a screen, drag to select a visual template, and copy a YAML step.</p>
+      <a class="inspector-link" href="/">Back to dashboard</a>
+    </header>
+    <section class="panel game-options">
+      <label>Surface
+        <select id="surface">
+          <option value="desktop">Desktop</option>
+          <option value="android">Android (ADB)</option>
+          <option value="browser">Browser</option>
+        </select>
+      </label>
+      <label>Window title <input id="window-title" placeholder="Optional game window title"></label>
+      <label>Device <input id="device" value="auto" placeholder="emulator-5554 or auto"></label>
+      <label>Browser URL <input id="url" type="url" placeholder="http://localhost:8001/game"></label>
+      <label>Templates folder <input id="templates-dir" placeholder="Default templates folder"></label>
+      <button id="capture" class="button">Capture screen</button>
+      <p id="status" role="status" class="empty"></p>
+    </section>
+    <section class="panel">
+      <div class="panel-heading">
+        <h2>Current screen</h2>
+        <label>Template name <input id="template-name" value="new_template"></label>
+        <button id="save-template" class="button" disabled>Save crop</button>
+      </div>
+      <div id="screen-holder" class="screen-holder">
+        <img id="screen" alt="Capture a game surface to select a template">
+        <div id="selection" class="crop-selection hidden"></div>
+      </div>
+      <pre id="yaml-step" class="yaml-step hidden"></pre>
+      <button id="copy-yaml" class="text-button hidden">Copy YAML step</button>
+    </section>
+    <section class="panel">
+      <div class="panel-heading">
+        <h2>Saved templates</h2>
+        <button id="refresh-templates" class="text-button">Refresh</button>
+      </div>
+      <div id="templates" class="template-grid"></div>
+    </section>
+  </main>
+  <script src="/static/game-template-maker.js"></script>
+</body>
+</html>

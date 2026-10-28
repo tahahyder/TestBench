@@ -1,0 +1,13 @@
+[ai]
+enabled = false
+provider = "ollama"
+model = "llama3.1"
+vision_model = "llava"
+max_calls_per_run = 20
+redact_secrets = true
+healing = "suggest"
+timeout = 30
+retries = 2
+max_prompt_chars = 24000
+consented_providers = []
+debug_log = false

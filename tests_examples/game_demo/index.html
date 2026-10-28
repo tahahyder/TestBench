@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TestBench Canvas Game Demo</title>
+  <style>
+    html, body { margin: 0; min-height: 100%; background: #101827; color: white; font: 20px system-ui, sans-serif; }
+    body { display: grid; place-items: center; }
+    main { text-align: center; }
+    canvas { display: block; width: 800px; height: 500px; max-width: 95vw; border: 2px solid #53627a; background: #182438; }
+    #status { min-height: 1.5em; margin: 10px; }
+  </style>
+</head>
+<body>
+  <main>
+    <canvas id="game" width="800" height="500" aria-label="Test game canvas"></canvas>
+    <div id="status">Ready</div>
+  </main>
+  <script>
+    const canvas = document.querySelector("#game");
+    const context = canvas.getContext("2d");
+    const status = document.querySelector("#status");
+    let playing = false;
+    let startedAt = 0;
+    let squareX = 0;
+
+    function draw(timestamp = 0) {
+      context.fillStyle = "#182438";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      if (!playing) {
+        context.fillStyle = "#168a55";
+        context.fillRect(250, 180, 300, 110);
+        context.strokeStyle = "#ffffff";
+        context.lineWidth = 5;
+        context.strokeRect(252, 182, 296, 106);
+        context.fillStyle = "#ffffff";
+        context.font = "bold 48px Arial";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillText("START", 400, 235);
+      } else {
+        squareX = 30 + ((timestamp - startedAt) / 8) % 700;
+        context.fillStyle = "#f4c542";
+        context.fillRect(squareX, 230, 48, 48);
+      }
+      requestAnimationFrame(draw);
+    }
+
+    canvas.addEventListener("click", event => {
+      const bounds = canvas.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) * canvas.width / bounds.width;
+      const y = (event.clientY - bounds.top) * canvas.height / bounds.height;
+      if (!playing && x >= 250 && x <= 550 && y >= 180 && y <= 290) {
+        playing = true;
+        startedAt = performance.now();
+        status.textContent = "Level 1";
+        setTimeout(() => {
+          playing = false;
+          status.textContent = "Game Over";
+        }, 12000);
+      }
+    });
+
+    requestAnimationFrame(draw);
+  </script>
+</body>
+</html>

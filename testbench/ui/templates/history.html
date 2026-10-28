@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Run history — TestBench</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <p class="eyebrow">Local run analytics</p>
+      <h1>Run history trends</h1>
+      <p><a href="/">Back to dashboard</a></p>
+    </header>
+    <section class="panel">
+      <h2>Pass rate by day</h2>
+      <div id="trend-status" role="status">Loading local history…</div>
+      <div id="pass-rate"></div>
+    </section>
+    <section class="panel">
+      <h2>Slowest tests</h2>
+      <ol id="slowest"></ol>
+    </section>
+    <section class="panel">
+      <h2>Flakiest tests</h2>
+      <ol id="flakiest"></ol>
+    </section>
+  </main>
+  <script src="/static/history.js"></script>
+</body>
+</html>
